@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.lt.test"
+        minSdkVersion 17
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    repositories {
+        jcenter() // If not already there
+        flatDir {
+            dirs 'libs'
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    //知乎相册
+    implementation project(':matisse')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:design:27.+'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //UI适配库
+    implementation 'com.zhy:autolayout:1.4.5'
+    //沉浸式状态栏
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    //网络状态监听
+    implementation 'com.caption:netmonitorlibrary:1.0.0'
+    //注解，省去findviewbyid
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife-compiler:8.8.1'
+    //图片加载框架
+    implementation 'com.github.bumptech.glide:glide:4.1.1'
+    implementation 'com.github.bumptech.glide:compiler:4.1.1'
+    //下拉刷新上拉加载
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'
+    //没有使用特殊Header，可以不加这行
+    //（一个轻量级的底部导航控件)可设置未读数、提示点、提示消息
+    implementation 'com.github.chaychan:BottomBarLayout:1.1.2'
+    //动态运行权限
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.1@aar'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.5'
+    //提高 Android UI 开发效率的 UI 库
+    implementation 'com.qmuiteam:qmui:1.1.2'
+}
